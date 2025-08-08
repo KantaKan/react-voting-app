@@ -7,6 +7,7 @@ import ProtectedRoute from "@/components/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
 import Landing from "@/pages/Landing.jsx";
 import Navbar from "@/components/Navbar.jsx";
+import Dashboard from "@/pages/Dashboard.jsx";
 
 function App() {
   const { init } = useAuthStore();
@@ -26,7 +27,7 @@ function App() {
         <Routes>
           <Route index element={<Landing />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/app" element={<Home />} />
+            <Route path="/app" element={<Dashboard />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Navigate to="/" replace />} />

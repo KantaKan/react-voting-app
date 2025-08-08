@@ -17,6 +17,9 @@ const logos = [
 ];
 import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/magicui/scroll-based-velocity";
 import { TextChats } from "../components/TextChat";
+import { ScratchToRevealGen } from "../components/GenScratch";
+import { CardExpandGen } from "../components/CardExpand";
+import { MarqueeGen } from "../components/magicui/GenReview";
 
 export default function Landing() {
   return (
@@ -30,7 +33,7 @@ export default function Landing() {
           <br />
           <AuroraText className="text-5xl sm:text-7xl">Learner Projects Voting System</AuroraText>
         </h1>
-        <p className="mt-4 text-muted-foreground">hello world</p>
+        <p className="mt-4 text-muted-foreground">Every line of code is a step toward mastery</p>
 
         <div className="mt-8 flex items-center justify-center gap-4">
           <Link to="/login">
@@ -65,6 +68,7 @@ export default function Landing() {
       </Reveal>
 
       {/* 50/50 Full-screen section: left TextReveal, right AnimatedList */}
+
       <TextChats />
       {/* Testimonials Marquee (moved below stats, full-width) */}
       {/* <Reveal>
@@ -99,6 +103,13 @@ export default function Landing() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
       </div>
+      {/* <section className="flex items-center justify-center w-full min-h-screen">
+        <ScratchToRevealGen />
+      </section> */}
+      <section className="my-25 w-full">
+        <CardExpandGen />
+      </section>
+      <MarqueeGen />
     </div>
   );
 }

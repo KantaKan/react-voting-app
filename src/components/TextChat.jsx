@@ -5,11 +5,11 @@ import { IconCloudDemo } from "./CloudIcon";
 
 export const TextChats = () => {
   return (
-    <section className="flex h-screen w-[80vw] mx-auto justify-center ">
-      <div className="flex-1/2">
-        <TextReveal>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officiis quod soluta sed libero corporis necessitatibus molestiae voluptatum debitis quis itaque, ipsa iure, dolorem deserunt.</TextReveal>
+    <section className="flex h-[100vh] w-[80vw] mx-auto justify-center  ">
+      <div className="flex-2/3 ">
+        <TextReveal>"Built with Effort. Designed with Passion. Learned with Purpose. Every project is a story of dedication and growth.."</TextReveal>
       </div>
-      <div className="flex-1/2 scale-150">
+      <div className="flex-1/3 scale-155">
         <IconCloudDemo />
       </div>
     </section>
