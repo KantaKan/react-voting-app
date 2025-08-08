@@ -1,6 +1,6 @@
 import { Marquee } from "@/components/magicui/Marquee";
 import { RetroGrid } from "@/components/magicui/RetroGrid";
-
+import { SparklesText } from "@/components/magicui/sparkles-text";
 import { InteractiveHoverButton } from "@/components/magicui/InteractiveHoverButton";
 import { Link } from "react-router-dom";
 import { AuroraText } from "@/components/magicui/aurora-text";
@@ -111,7 +111,7 @@ export default function Landing() {
         <CarouselGen />
       </section>
       <section className="flex flex-col items-center justify-center my-25 gap-8">
-        <TypingAnimation startOnView={true}>Feedback from Mentors ✨</TypingAnimation>
+        <SparklesText sparklesCount={37}>Feedback from Mentors ✨</SparklesText>
         <MarqueeGen />
       </section>
     </div>

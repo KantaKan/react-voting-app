@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { TypingAnimation } from "@/components/magicui/typing-animation";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -58,7 +58,9 @@ export const CardCarousel: React.FC<CarouselProps> = ({ images, autoplayDelay = 
           <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
             <div className="flex gap-2">
               <div>
-                <h3 className="text-5xl opacity-85 font-bold tracking-tight">Checkout Our Project 🔥</h3>
+                <h3 className="text-5xl opacity-85 font-bold tracking-tight">
+                  <TypingAnimation startOnView={true}>Checkout Our Project 🔥</TypingAnimation>
+                </h3>
                 <p className="text-lg">You can check all project by clicking on picture</p>
               </div>
             </div>
