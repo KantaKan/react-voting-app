@@ -9,7 +9,7 @@ import Stats from "@/components/Stats";
 import Reveal from "@/components/Reveal";
 import TextReveal from "@/components/magicui/TextReveal";
 import AnimatedList from "@/components/magicui/AnimatedList";
-
+import { TypingAnimation } from "@/components/magicui/typing-animation";
 const logos = [
   { name: "Generation Thailand", img: "/gen.png" },
   { name: "Vercel", img: "/vite.svg" },
@@ -20,6 +20,7 @@ import { TextChats } from "../components/TextChat";
 import { ScratchToRevealGen } from "../components/GenScratch";
 import { CardExpandGen } from "../components/CardExpand";
 import { MarqueeGen } from "../components/magicui/GenReview";
+import { CarouselGen } from "../components/CarouselGen";
 
 export default function Landing() {
   return (
@@ -107,9 +108,12 @@ export default function Landing() {
         <ScratchToRevealGen />
       </section> */}
       <section className="my-25 w-full">
-        <CardExpandGen />
+        <CarouselGen />
       </section>
-      <MarqueeGen />
+      <section className="flex flex-col items-center justify-center my-25 gap-8">
+        <TypingAnimation startOnView={true}>Feedback from Mentors ✨</TypingAnimation>
+        <MarqueeGen />
+      </section>
     </div>
   );
 }
