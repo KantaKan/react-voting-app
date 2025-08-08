@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "@/pages/Login.jsx";
 import UserMenu from "@/components/UserMenu.jsx";
 import { useAuthStore } from "@/store/auth";
+import ProtectedRoute from "@/components/ProtectedRoute.jsx";
+import Home from "@/pages/Home.jsx";
+import Landing from "@/pages/Landing.jsx";
 
 function App() {
-  const { user, init } = useAuthStore();
+  const { init } = useAuthStore();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -20,7 +24,16 @@ function App() {
         <div className="font-semibold">Vote App</div>
         <UserMenu />
       </header>
-      <main>{user ? <div className="p-4">Welcome, {user.name || user.username}!</div> : <Login />}</main>
+      <main>
+        <Routes>
+          <Route index element={<Landing />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/app" element={<Home />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
     </div>
   );
 }

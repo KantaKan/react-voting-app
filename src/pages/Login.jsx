@@ -1,18 +1,20 @@
 import { useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
 
 export default function Login() {
   const { login, register, status, error } = useAuthStore();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
   const [mode, setMode] = useState("login");
   const [form, setForm] = useState({ username: "", password: "", name: "" });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (mode === "login") {
-      await login(form.username.trim().toLowerCase(), form.password);
-    } else {
-      await register(form.username.trim().toLowerCase(), form.password, form.name);
-    }
+    const lower = form.username.trim().toLowerCase();
+    const result = mode === "login" ? await login(lower, form.password) : await register(lower, form.password, form.name);
+    if (result?.ok) navigate(from, { replace: true });
   };
 
   return (
@@ -57,6 +59,11 @@ export default function Login() {
               Have an account? Login
             </button>
           )}
+          <div className="mt-2">
+            <Link to="/" className="underline">
+              Back to home
+            </Link>
+          </div>
         </div>
       </div>
     </div>
