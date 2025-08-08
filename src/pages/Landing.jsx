@@ -3,7 +3,7 @@ import { RetroGrid } from "@/components/magicui/RetroGrid";
 import { AnimatedGradientText } from "@/components/magicui/AnimatedGradientText";
 import { InteractiveHoverButton } from "@/components/magicui/InteractiveHoverButton";
 import { Link } from "react-router-dom";
-
+import { AuroraText } from "@/components/magicui/aurora-text";
 const logos = [
   { name: "Generation Thailand", img: "/gen.png" },
   { name: "Vercel", img: "/vite.svg" },
@@ -19,7 +19,7 @@ export default function Landing() {
         <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-6xl">
           Generation Thailand
           <br />
-          <AnimatedGradientText className="text-5xl sm:text-7xl">Learner Projects Voting System</AnimatedGradientText>
+          <AuroraText className="text-5xl sm:text-7xl">Learner Projects Voting System</AuroraText>
         </h1>
         <p className="mt-4 text-muted-foreground">hello world</p>
 

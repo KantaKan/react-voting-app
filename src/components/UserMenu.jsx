@@ -1,16 +1,24 @@
 import { useAuthStore } from "@/store/auth";
+import { InteractiveHoverButton } from "@/components/magicui/InteractiveHoverButton";
+import { useNavigate } from "react-router-dom";
 
 export default function UserMenu() {
   const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
   if (!user) return null;
   return (
     <div className="flex items-center gap-3">
-      <div className="text-sm">
-        Signed in as <span className="font-medium">{user.username}</span>
+      <div className="text-sm text-muted-foreground">
+        Signed in as <span className="font-medium text-foreground">{user.username}</span>
       </div>
-      <button className="border rounded px-3 py-1" onClick={logout}>
+      <InteractiveHoverButton
+        onClick={async () => {
+          await logout();
+          navigate("/", { replace: true });
+        }}
+      >
         Logout
-      </button>
+      </InteractiveHoverButton>
     </div>
   );
 }

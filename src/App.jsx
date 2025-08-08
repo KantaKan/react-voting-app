@@ -6,6 +6,7 @@ import { useAuthStore } from "@/store/auth";
 import ProtectedRoute from "@/components/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
 import Landing from "@/pages/Landing.jsx";
+import Navbar from "@/components/Navbar.jsx";
 
 function App() {
   const { init } = useAuthStore();
@@ -20,10 +21,7 @@ function App() {
 
   return (
     <div className="min-h-dvh">
-      <header className="border-b p-4 flex items-center justify-between">
-        <div className="font-semibold">Vote App</div>
-        <UserMenu />
-      </header>
+      <Navbar />
       <main>
         <Routes>
           <Route index element={<Landing />} />
