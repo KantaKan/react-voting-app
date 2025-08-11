@@ -37,10 +37,10 @@ function PageCard({ page, onEdit, onDelete }) {
         )}
       </div>
       <div className="flex items-center gap-2 mt-2">
-        <button className="border rounded px-3 py-1" onClick={() => onEdit(page)}>
+        <button type="button" className="border rounded px-3 py-1" onClick={() => onEdit(page)}>
           Edit
         </button>
-        <button className="border rounded px-3 py-1" onClick={() => onDelete(page)}>
+        <button type="button" className="border rounded px-3 py-1" onClick={() => onDelete(page)}>
           Delete
         </button>
       </div>
@@ -114,9 +114,13 @@ export default function Dashboard() {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    e.stopPropagation(); // Add this to prevent event bubbling
+
     if (!form.title.trim()) return;
+
     setSaving(true);
     setError("");
+
     try {
       const payload = {
         title: form.title.trim(),
@@ -161,7 +165,19 @@ export default function Dashboard() {
       }
       setForm(emptyForm);
     } catch (e) {
-      setError(e.message || "Save failed");
+      console.error("Form submission error:", e);
+      const errorMessage = e.message || "Save failed";
+
+      // If it's a session expiry, show a more helpful message
+      if (errorMessage.includes("session has expired") || errorMessage.includes("log in again")) {
+        setError("Your session has expired. The page will refresh to log you in again.");
+        // Optionally redirect to login or refresh the page after a delay
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setSaving(false);
     }
@@ -186,7 +202,9 @@ export default function Dashboard() {
           </h1>
           <p className="text-sm text-muted-foreground">Create, edit and manage your projects.</p>
         </div>
-        <InteractiveHoverButton onClick={startCreate}>New Project</InteractiveHoverButton>
+        <InteractiveHoverButton type="button" onClick={startCreate}>
+          New Project
+        </InteractiveHoverButton>
       </div>
 
       <form onSubmit={submitForm} className="grid gap-3 rounded-lg border p-4 mb-8 bg-card">

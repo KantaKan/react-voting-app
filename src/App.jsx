@@ -8,6 +8,7 @@ import Home from "@/pages/Home.jsx";
 import Landing from "@/pages/Landing.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Dashboard from "@/pages/Dashboard.jsx";
+import { AuthDebug } from "./pages/Debug";
 
 function App() {
   const { init } = useAuthStore();

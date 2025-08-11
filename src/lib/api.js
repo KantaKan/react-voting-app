@@ -3,6 +3,8 @@ import axios from "axios";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3000";
 
 export async function apiRequest(path, { method = "GET", body, headers = {}, accessToken } = {}) {
+  console.log(`🌐 API Request: ${method} ${path}`, { hasAccessToken: !!accessToken, hasBody: !!body });
+
   try {
     const res = await axios.request({
       baseURL: API_BASE,
@@ -15,22 +17,29 @@ export async function apiRequest(path, { method = "GET", body, headers = {}, acc
       },
       data: body,
       withCredentials: false,
-      validateStatus: () => true,
+      // Remove validateStatus - let axios handle errors normally
     });
 
-    if (res.status >= 200 && res.status < 300) {
-      return res.data;
-    }
-
-    const error = new Error(res.data?.error || res.statusText || "Request failed");
-    error.status = res.status;
-    throw error;
+    console.log(`✅ API Success: ${method} ${path} (${res.status})`);
+    return res.data;
   } catch (err) {
+    console.log(`❌ API Error: ${method} ${path}`, err.response?.status, err.response?.data?.error || err.message);
+
+    // Consistent error handling
     if (err.response) {
-      const error = new Error(err.response.data?.error || err.message || "Request failed");
+      // Server responded with error status
+      const error = new Error(err.response.data?.error || err.response.statusText || "Request failed");
       error.status = err.response.status;
+      error.response = err.response;
       throw error;
+    } else if (err.request) {
+      // Network error - no response received
+      const error = new Error("Network error - no response received");
+      error.status = 0;
+      throw error;
+    } else {
+      // Something else went wrong
+      throw new Error(err.message || "Request failed");
     }
-    throw err;
   }
 }
