@@ -9,6 +9,7 @@ import Landing from "@/pages/Landing.jsx";
 import Navbar from "@/components/Navbar.jsx";
 import Dashboard from "@/pages/Dashboard.jsx";
 import { AuthDebug } from "./pages/Debug";
+import { ListPage } from "./pages/List";
 
 function App() {
   const { init } = useAuthStore();
@@ -29,6 +30,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/app" element={<Dashboard />} />
+            <Route path="/list" element={<ListPage />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Navigate to="/" replace />} />
