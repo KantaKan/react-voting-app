@@ -1,6 +1,7 @@
 import { MinimalCard, MinimalCardDescription, MinimalCardImage, MinimalCardTitle } from "@/components/ui/minimal-card";
-import { InteractiveHoverButton } from "@/components/magicui/interactivehoverbutton";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
 
+import { Heart, ArrowRight } from "lucide-react";
 export function ProjectCard() {
   const cards = [
     {
@@ -28,10 +29,15 @@ export function ProjectCard() {
               <MinimalCardImage className="h-[320px]" src={card.src} alt={card.title} />
               <MinimalCardTitle>{card.title}</MinimalCardTitle>
               <MinimalCardDescription>{card.description}</MinimalCardDescription>
-              <div className="flex m-2 gap-4">
-                <InteractiveHoverButton className="w-full ">Hover Me</InteractiveHoverButton>
-
-                <div className="flex-1/3 bg-green-200 rounded-3xl"></div>
+              <div className="flex m-2 gap-2 items-center justify-between">
+                <RainbowButton size="lg" variant="outline" className="flex-1 hover:scale-105 duration-100">
+                  <Heart className=" fill-current text-red-500 hover:text-red-600" />
+                  Like
+                </RainbowButton>
+                <RainbowButton size="lg" className="w-68 hover:scale-105 duration-100">
+                  View this Project
+                  <ArrowRight />
+                </RainbowButton>
               </div>
             </MinimalCard>
           ))}
