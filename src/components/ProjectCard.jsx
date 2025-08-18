@@ -1,4 +1,5 @@
 import { MinimalCard, MinimalCardDescription, MinimalCardImage, MinimalCardTitle } from "@/components/ui/minimal-card";
+import { InteractiveHoverButton } from "@/components/magicui/interactivehoverbutton";
 
 export function ProjectCard() {
   const cards = [
@@ -27,8 +28,10 @@ export function ProjectCard() {
               <MinimalCardImage className="h-[320px]" src={card.src} alt={card.title} />
               <MinimalCardTitle>{card.title}</MinimalCardTitle>
               <MinimalCardDescription>{card.description}</MinimalCardDescription>
-              <div className="flex m-10">
-                <button>hello</button>
+              <div className="flex m-2 gap-4">
+                <InteractiveHoverButton className="w-full ">Hover Me</InteractiveHoverButton>
+
+                <div className="flex-1/3 bg-green-200 rounded-3xl"></div>
               </div>
             </MinimalCard>
           ))}
