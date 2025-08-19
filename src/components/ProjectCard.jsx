@@ -27,16 +27,16 @@ export function ProjectCard() {
       <div className="flex flex-col justify-center rounded-lg p-4">
         <div className="flex flex-wrap items-center justify-center ">
           {cards.map((card, index) => (
-            <MinimalCard className="m-2 w-[460px] " key={index}>
+            <MinimalCard className="m-2 w-[460px] drop-shadow-2xl" key={index}>
               <MinimalCardImage className="h-[320px]" src={card.src} alt={card.title} />
               <MinimalCardTitle>{card.title}</MinimalCardTitle>
               <MinimalCardDescription>{card.description}</MinimalCardDescription>
               <div className="flex m-2 gap-2 items-center justify-between">
-                <RainbowButton size="lg" variant="outline" className="flex-1 hover:scale-105 duration-100" onClick={() => setLike((prev) => !prev)}>
+                <RainbowButton size="lg" variant="outline" className="flex-1 hover:scale-105 drop-shadow-xl duration-100" onClick={() => setLike((prev) => !prev)}>
                   <Heart className={`fill-current transition-all duration-700 ${like ? "text-red-500 hover:text-red-600" : ""}`} />
                   {like ? "Liked" : "Like"}
                 </RainbowButton>
-                <RainbowButton size="lg" className="w-68 hover:scale-105 duration-100">
+                <RainbowButton size="lg" className="w-68 hover:scale-105 drop-shadow-xl  duration-100">
                   View this Project
                   <ArrowRight />
                 </RainbowButton>
