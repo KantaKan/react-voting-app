@@ -40,9 +40,9 @@ export default function Landing() {
           <Link to="/login">
             <InteractiveHoverButton>Login</InteractiveHoverButton>
           </Link>
-          <a href="#testimonials" className="border rounded-full px-5 py-2">
-            Learners Projects
-          </a>
+          <Link to="list">
+            <a className="border rounded-full px-5 py-2">Learner Projects</a>
+          </Link>
         </div>
 
         <div className="mt-10 text-sm text-muted-foreground">Powering the next generation of digital products</div>
